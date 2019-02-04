@@ -7,9 +7,7 @@ output:
         keep_md: True
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(message = FALSE)
-```
+
 ## Lab1
 
 substitute a link to Lab1 repo here
@@ -23,7 +21,8 @@ error now
 
 
 
-```{r}
+
+```r
 library(tidyverse)
 
 weather <- read_fwf("ushcn-v2.5-stations.txt",
@@ -50,15 +49,20 @@ weather %>%
   scale_fill_gradient(low = "pink", high = "yellow") +
   ggtitle("Stations, Elevation and Time Zone") +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 20))
-# Some states have two "UTC OFFSET" values, so the time zone may not be exactly true
+```
 
+![](README_Yawei_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+
+```r
+# Some states have two "UTC OFFSET" values, so the time zone may not be exactly true
 ```
 
 
 ## More weather data
 
 don't know how to do now
-```{r}
+
+```r
 #zip <- read_tsv("ushcn.tavg.latest.raw.tar.gz")
 #zip2 <- read_fwf("ushcn.tavg.latest.raw.tar.gz", 
 #                 col_positions = #fwf_empty("ushcn.tavg.latest.raw.tar.gz"))
