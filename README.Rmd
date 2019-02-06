@@ -69,12 +69,23 @@ download.file(URL, destfile)
 ```
 
 ```{r, echo=FALSE}
-# unzip the gz file
-untar("ushcn.tavg.latest.raw.tar.gz") 
+# Create a folder called TavgLatestRaw. The gz file will be unzipped in this folder.
+TavgLatestRawFolder <- "TavgLatestRaw"
+dir.create(TavgLatestRawFolder)
 
-# read file names in unzipped files
-files <-dir("ushcn.v2.5.5.20190204/")
+# Unzip the gz file. This will create a folder "ushcn something-something" within the TavgLatestRaw folder. This newest folder will contains the unzipped files.
+untar("ushcn.tavg.latest.raw.tar.gz", exdir=TavgLatestRawFolder) 
 
+# Get the name of the new folder "ushcn something-something"
+UnzippedFolder <- list.files(TavgLatestRawFolder)
+
+# Change the working directory to the folder TavgLatestRaw
+setwd(TavgLatestRawFolder)
+
+# read file names of the unzipped files in "ushcn something-something"
+files <-dir(UnzippedFolder)
+
+# count the number of files 
 numfiles <- length(files)
 ```
 The file ushcn.tavg.latest.raw.tar.gz downloaded from ftp://ftp.ncdc.noaa.gov/pub/data/ushcn/v2.5  contains `r numfiles` files.
