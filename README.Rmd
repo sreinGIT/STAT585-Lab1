@@ -11,7 +11,17 @@ library(tidyverse)
 library(RCurl)
 ```
 
+## GitHub Respository
+Our GitHub repository for this lab is https://github.com/sreinGIT/STAT585-Lab1.git.
+
 ## Build a Book
+The last word in chapter 15 is pseudo-class. 
+
+The biggest problem that we encountered was an error that occured when the index.Rmd file tried to compile line 783 of Conditions.Rmd. The error was
+
+> Execution halted Error in Rscript_render(f, render_args, render_meta) : Failed to compile Conditions.Rmd Calls: <Anonymous> ... render_book -> render_new_session -> Rscript_render Execution halted
+
+We tried Googling the error but were unable to find helpful fixes. In the end, we added "error = TRUE" to the header of that code chunk so that the file would continue to compile despite the error. 
 
 
 ## Weather Station
@@ -71,7 +81,7 @@ download.file(URL, destfile)
 ```{r, echo=FALSE}
 # Create a folder called TavgLatestRaw. The gz file will be unzipped in this folder.
 TavgLatestRawFolder <- "TavgLatestRaw"
-dir.create(TavgLatestRawFolder)
+dir.create(TavgLatestRawFolder, showWarnings=FALSE)
 
 # Unzip the gz file. This will create a folder "ushcn something-something" within the TavgLatestRaw folder. This newest folder will contains the unzipped files.
 untar("ushcn.tavg.latest.raw.tar.gz", exdir=TavgLatestRawFolder) 
